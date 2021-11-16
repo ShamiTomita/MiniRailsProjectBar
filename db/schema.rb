@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_161714) do
     t.string "ingredient_3"
     t.string "ingredient_4"
     t.string "ingredient_5"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

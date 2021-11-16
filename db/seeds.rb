@@ -35,7 +35,7 @@ def get_cocktail
     if !drink_array.nil?
       drink_array["drinks"].each do |cocktail|
         if cocktail["strAlcoholic"]== "Alcoholic"
-          c = Cocktail.create(name: cocktail["strDrink"])
+          c = Cocktail.create(name: cocktail["strDrink"], image_url: cocktail["strDrinkThumb"])
             if !cocktail["strIngredient1"].nil?
               c.update(ingredient_1:cocktail["strIngredient1"])
             end
@@ -57,6 +57,6 @@ def get_cocktail
       end
 
     end
-    
+
   end
 end
