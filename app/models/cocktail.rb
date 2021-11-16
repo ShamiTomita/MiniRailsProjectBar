@@ -31,4 +31,27 @@ class Cocktail < ApplicationRecord
     end
     ing.compact
   end
+
+  def self.all_ingredients
+    all_ing = []
+    cocktails = Cocktail.all
+    cocktails.each do |cocktail|
+      cocktail.ingredients.each do |ing|
+        ing.capitalize
+      end
+      all_ing << cocktail.ingredients
+    end
+    all_ing = all_ing.flatten
+    all_ing = all_ing.uniq
+    sorted = all_ing.sort
+    sorted.delete("")
+    sorted.delete("lemon juice")
+    sorted.delete("lemon")
+    sorted.delete("gin")
+    sorted.delete("maraschino liqueur")
+    sorted.delete("pineapple juice")
+    sorted.delete("blackstrap rum")
+    sorted.delete("demerara Sugar")
+    sorted
+  end
 end
