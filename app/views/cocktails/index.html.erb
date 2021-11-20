@@ -3,3 +3,24 @@
   <input type="text" name="search_name" >
   <input type="submit" value="Search Cocktails">
 </form>
+<br>
+<form action="/cocktails" method="GET">
+  <%= select_tag "filter", options_for_select(Cocktail.all_ingredients.collect {|p| [p, p]})%>
+  <input type="submit" value="Search By Ingredient">
+</form>
+
+<div class="clear">
+<%= link_to "Clear Filter Options", clear_path %>
+</div>
+  <%if !@cocktail.nil? %>
+    <% @cocktail.each do |c| %>
+      <h1><strong><%= c.name %></h1></strong>
+      <%= c.ingredients.join(', ')%>
+  <%end%>
+    <%end%>
+  <%if !@cocktails.nil?%>
+  <% @cocktails.each do |cocktail|%>
+    <h1><strong><%= cocktail.name %></h1></strong>
+    <%= cocktail.ingredients.join(', ')%>
+<%end%>
+<%end%>

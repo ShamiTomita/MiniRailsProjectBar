@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'session#new', as: 'signin'
   post '/session', to: 'session#create', as: 'session'
   delete '/session/', to: 'session#destroy'
+    get '/cocktails/clear', to: 'cocktails#clear', as: 'clear'
   resources :cocktails
   resources :users
   resources :drinks

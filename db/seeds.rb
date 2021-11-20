@@ -37,21 +37,25 @@ def get_cocktail
         if cocktail["strAlcoholic"]== "Alcoholic"
           c = Cocktail.create(name: cocktail["strDrink"], image_url: cocktail["strDrinkThumb"])
             if !cocktail["strIngredient1"].nil?
-              c.update(ingredient_1:cocktail["strIngredient1"])
+                ing1 = cocktail["strIngredient1"].titleize
+                c.update(ingredient_1: ing1)
             end
             if !cocktail["strIngredient2"].nil?
-              c.update(ingredient_2:cocktail["strIngredient2"])
+              ing2 = cocktail["strIngredient2"].titleize
+              c.update(ingredient_2: ing2)
             end
-            if !cocktail["strIngredient1"].nil?
-              c.update(ingredient_3:cocktail["strIngredient3"])
+            if !cocktail["strIngredient3"].nil?
+              ing3 = cocktail["strIngredient3"].titleize
+              c.update(ingredient_3: ing3)
             end
             if !cocktail["strIngredient4"].nil?
-              c.update(ingredient_4:cocktail["strIngredient4"])
+              ing4 = cocktail["strIngredient4"].titleize
+              c.update(ingredient_4: ing4)
             end
             if !cocktail["strIngredient5"].nil?
-              c.update(ingredient_5:cocktail["strIngredient5"])
+              ing5 = cocktail["strIngredient5"].titleize
+              c.update(ingredient_5: ing5)
             end
-          c.save
         end
 
       end
