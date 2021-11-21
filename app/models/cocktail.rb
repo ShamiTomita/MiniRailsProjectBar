@@ -1,8 +1,8 @@
-
 require 'open-uri'
 class Cocktail < ApplicationRecord
   has_one_attached :image
-
+  has_many :drinks
+  has_many :users, :through => :drinks
 
   def attach_image
     if !self.image_url.nil?

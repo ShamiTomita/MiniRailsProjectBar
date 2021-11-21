@@ -1,0 +1,9 @@
+<div class=banner>
+<h1>Sip Sip Sip</h1>
+<p>You just enjoyed your drink, the <%=@cocktail.name%></p>
+<div class="img">
+<%= image_tag @cocktail.image_url %>
+</div>
+<br>
+<%=link_to "Order Another?", clear_path%>
+</div>

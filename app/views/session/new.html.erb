@@ -1,4 +1,5 @@
-<%= form_tag('/session', method: :post) do %>
+<div class="banner">
+<%= form_tag('/login', method: :post) do %>
 
   <div class="form-group">
     <%= label_tag(:name, "Your name:") %>
@@ -16,3 +17,4 @@
   <%=  submit_tag ("Sign In")%>
   </div>
   <%end%>
+</div>

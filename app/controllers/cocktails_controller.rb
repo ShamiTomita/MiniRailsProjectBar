@@ -6,6 +6,11 @@ class CocktailsController < ApplicationController
     handle_filters
   end
 
+  def show
+    @cocktail = Cocktail.find_by(id: params[:id])
+    @drink = Drink.create(user_id: current_user.id, cocktail_id: @cocktail.id)
+  end
+
   def clear
     clear_session(:search_name, :filter_name, :filter)
     redirect_to cocktails_path

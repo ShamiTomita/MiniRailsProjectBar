@@ -1,26 +1,38 @@
+<div class="row h-100">
+<div class="col-sm-12 my-auto">
+<div class=banner>
 <h1>Welcome To The Lounge, Please Ask the Bartender For Your Drink</h1>
+</div>
+
+<div class=search>
 <form action="/cocktails" method="GET">
   <input type="text" name="search_name" >
   <input type="submit" value="Search Cocktails">
 </form>
 <br>
 <form action="/cocktails" method="GET">
-  <%= select_tag "filter", options_for_select(Cocktail.all_ingredients.collect {|p| [p, p]})%>
+  <%= select_tag "filter", options_for_select(Cocktail.all_ingredients.collect {|p| [p, p]}), prompt: 'Ingredient List'%>
   <input type="submit" value="Search By Ingredient">
 </form>
 
 <div class="clear">
+  <h5>Clear Filter For New Search</h5>
 <%= link_to "Clear Filter Options", clear_path %>
 </div>
+</div>
+<div class=cocktails>
   <%if !@cocktail.nil? %>
     <% @cocktail.each do |c| %>
-      <h1><strong><%= c.name %></h1></strong>
+      <h1><strong><%= link_to c.name, cocktail_path(c), data: { confirm: 'Order this?' } %></h1></strong>
       <%= c.ingredients.join(', ')%>
   <%end%>
     <%end%>
   <%if !@cocktails.nil?%>
   <% @cocktails.each do |cocktail|%>
-    <h1><strong><%= cocktail.name %></h1></strong>
+    <h1><strong><%=link_to cocktail.name, cocktail_path(cocktail), data: { confirm: 'Order this?' } %></h1></strong>
     <%= cocktail.ingredients.join(', ')%>
 <%end%>
 <%end%>
+</div>
+</div>
+</div>

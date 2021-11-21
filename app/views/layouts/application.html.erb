@@ -8,7 +8,22 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
+  <%if current_user%>
+  <nav class="navbar navbar-light bg-light">
+    <% if current_user.drinks_had <= 2 %>
+  <span class="navbar-brand mb-10 h1"> You have had: <%=current_user.drinks_had%> drinks</span>
+  <span class="navbar-brand mb-0 h1"><%=link_to "Logout", logout_path, method:'delete', data: { confirm: 'Logout?' }%></span>
+   <%elsif current_user.drinks_had == 3 || current_user.drinks_had == 4 %>
+  <span class="navbar-brand mb-0 h1"> <%=current_user.drinks_had%> drinks, Maybe Slow Down A bit...</span>
+  <span class="navbar-brand mb-0 h1"><%=link_to "Logout", logout_path, method:'delete', data: { confirm: 'Logout?' }%></span>
+  <%elsif current_user.drinks_had >= 5 %>
+  <span class="navbar-brand mb-0 h1">Time to call it a night buddy.</span>
+  <span class="navbar-brand mb-0 h1"><%=link_to "Logout", logout_path, method:'delete', data: { confirm: 'Logout?' }%></span>
+  <%end%>
+  <%end%>
+  </nav>
 
   <body>
     <%= yield %>

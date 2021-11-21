@@ -36,23 +36,23 @@ def get_cocktail
       drink_array["drinks"].each do |cocktail|
         if cocktail["strAlcoholic"]== "Alcoholic"
           c = Cocktail.create(name: cocktail["strDrink"], image_url: cocktail["strDrinkThumb"])
-            if !cocktail["strIngredient1"].nil?
+            if !cocktail["strIngredient1"].nil? && cocktail["strIngredient1"] != ""
                 ing1 = cocktail["strIngredient1"].titleize
                 c.update(ingredient_1: ing1)
             end
-            if !cocktail["strIngredient2"].nil?
+            if !cocktail["strIngredient2"].nil? && cocktail["strIngredient2"] != ""
               ing2 = cocktail["strIngredient2"].titleize
               c.update(ingredient_2: ing2)
             end
-            if !cocktail["strIngredient3"].nil?
+            if !cocktail["strIngredient3"].nil? && cocktail["strIngredient3"] != ""
               ing3 = cocktail["strIngredient3"].titleize
               c.update(ingredient_3: ing3)
             end
-            if !cocktail["strIngredient4"].nil?
+            if !cocktail["strIngredient4"].nil? && cocktail["strIngredient4"] != ""
               ing4 = cocktail["strIngredient4"].titleize
               c.update(ingredient_4: ing4)
             end
-            if !cocktail["strIngredient5"].nil?
+            if !cocktail["strIngredient5"].nil? && cocktail["strIngredient5"] != ""
               ing5 = cocktail["strIngredient5"].titleize
               c.update(ingredient_5: ing5)
             end

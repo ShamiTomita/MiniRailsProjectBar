@@ -6,8 +6,9 @@ class SessionController < ApplicationController
   def create
     if @user = User.find_by(name: params[:user][:name])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to cocktails_path
     else
+      flash[:message] = "Sorry, your input was wrong or does not exist, please try again."
       render 'new'
     end
   end
